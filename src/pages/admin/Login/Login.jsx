@@ -47,7 +47,7 @@ export default function Login() {
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="admin@exora.id"
+            placeholder="admin@myexora.my.id"
           />
           <Input
             label="Password"
