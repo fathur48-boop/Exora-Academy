@@ -4,7 +4,7 @@ import { createClient } from "@supabase/supabase-js";
 import { writeFileSync } from "fs";
 import "dotenv/config";
 
-const SITE_URL = process.env.VITE_SITE_URL || "https://academy.exora.id";
+const SITE_URL = process.env.VITE_SITE_URL || "https://myexora.my.id";
 const supabase = createClient(process.env.VITE_SUPABASE_URL, process.env.VITE_SUPABASE_ANON_KEY);
 
 async function main() {
