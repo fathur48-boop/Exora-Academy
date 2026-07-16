@@ -4,7 +4,7 @@ export default function ExoraCta({
   eyebrow = "Exora",
   title = "Udah paham teorinya? Saatnya praktik jualan online.",
   description = "Exora bantu kamu bikin toko online, catat pesanan, sampai kelola stok — dalam satu aplikasi buat UMKM.",
-  href = "https://exora.id",
+  href = "https://myexora.com",
 }) {
   return (
     <section className="flex flex-col items-start gap-5 rounded-2xl border border-line bg-white p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
