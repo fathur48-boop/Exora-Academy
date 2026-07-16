@@ -1,0 +1,10 @@
+{
+  "name": "Exora Academy",
+  "short_name": "Exora Academy",
+  "description": "Belajar jualan online, marketing, dan AI untuk UMKM",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FBFAF7",
+  "theme_color": "#1F6F5C",
+  "icons": [{ "src": "/favicon.ico", "sizes": "64x64", "type": "image/x-icon" }]
+}
