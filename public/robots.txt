@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 
-Sitemap: https://academy.exora.id/sitemap-index.xml
+Sitemap: https://myexora.my.id/sitemap-index.xml
