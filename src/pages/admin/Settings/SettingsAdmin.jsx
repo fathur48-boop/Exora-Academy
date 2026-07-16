@@ -20,7 +20,7 @@ export default function SettingsAdmin() {
 
       <form onSubmit={handleSubmit} className="max-w-lg space-y-4 rounded-2xl border border-line bg-white p-5">
         <Input label="Nama Situs" defaultValue="Exora Academy" disabled />
-        <Input label="URL Situs" defaultValue={import.meta.env.VITE_SITE_URL || "https://academy.exora.id"} disabled />
+        <Input label="URL Situs" defaultValue={import.meta.env.VITE_SITE_URL || "https://myexora.my.id"} disabled />
         <Input label="Google Analytics ID" placeholder="G-XXXXXXX" defaultValue={import.meta.env.VITE_GA_ID || ""} />
         <Input label="Microsoft Clarity ID" placeholder="xxxxxxx" defaultValue={import.meta.env.VITE_CLARITY_ID || ""} />
         <p className="text-xs text-muted">
