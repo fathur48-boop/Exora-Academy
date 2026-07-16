@@ -41,7 +41,7 @@ export default function Navbar() {
           >
             <Search size={18} />
           </Link>
-          <a href="https://myexora.my.id" className="btn-primary hidden sm:inline-flex">
+          <a href="https://myexora.com" className="btn-primary hidden sm:inline-flex">
             Coba Exora
           </a>
           <button
