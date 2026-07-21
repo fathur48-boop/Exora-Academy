@@ -1,3 +1,4 @@
+import { useRef, useState } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Link from "@tiptap/extension-link";
@@ -16,8 +17,12 @@ import {
   Undo,
   Redo,
 } from "lucide-react";
+import { uploadMedia } from "@/services/media.js";
 
 export default function TiptapEditor({ value, onChange }) {
+  const fileInputRef = useRef(null);
+  const [uploading, setUploading] = useState(false);
+
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -41,9 +46,23 @@ export default function TiptapEditor({ value, onChange }) {
     if (url) editor.chain().focus().setLink({ href: url }).run();
   }
 
-  function addImage() {
-    const url = window.prompt("URL gambar (upload dulu di menu Media):");
-    if (url) editor.chain().focus().setImage({ src: url }).run();
+  function triggerImageUpload() {
+    fileInputRef.current?.click();
+  }
+
+  async function handleImageFile(e) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploading(true);
+    try {
+      const media = await uploadMedia("content", file);
+      editor.chain().focus().setImage({ src: media.url }).run();
+    } catch (err) {
+      alert("Upload gambar gagal: " + err.message);
+    } finally {
+      setUploading(false);
+      e.target.value = "";
+    }
   }
 
   const tools = [
@@ -55,7 +74,7 @@ export default function TiptapEditor({ value, onChange }) {
     { icon: ListOrdered, action: () => editor.chain().focus().toggleOrderedList().run(), active: editor.isActive("orderedList") },
     { icon: Quote, action: () => editor.chain().focus().toggleBlockquote().run(), active: editor.isActive("blockquote") },
     { icon: LinkIcon, action: addLink, active: editor.isActive("link") },
-    { icon: ImageIcon, action: addImage, active: false },
+    { icon: ImageIcon, action: triggerImageUpload, active: false },
     { icon: Undo, action: () => editor.chain().focus().undo().run(), active: false },
     { icon: Redo, action: () => editor.chain().focus().redo().run(), active: false },
   ];
@@ -68,11 +87,20 @@ export default function TiptapEditor({ value, onChange }) {
             key={i}
             type="button"
             onClick={t.action}
+            disabled={uploading}
             className={`rounded-md p-2 transition ${t.active ? "bg-brand/10 text-brand" : "text-ink/60 hover:bg-ink/5"}`}
           >
             <t.icon size={15} />
           </button>
         ))}
+        {uploading && <span className="ml-1 text-xs text-muted">Mengunggah gambar…</span>}
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept="image/*"
+          className="hidden"
+          onChange={handleImageFile}
+        />
       </div>
       <EditorContent editor={editor} />
     </div>
