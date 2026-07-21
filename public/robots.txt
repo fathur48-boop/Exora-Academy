@@ -10,3 +10,4 @@ Allow: /contact
 Allow: /privacy
 Allow: /terms
 Sitemap: https://myexora.my.id/sitemap-index.xml
+Sitemap: https://myexora.my.id/sitemap.xml
