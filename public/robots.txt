@@ -1,5 +1,12 @@
 User-agent: *
-Allow: /
 Disallow: /admin/
-
+Allow: /
+Allow: /kategori
+Allow: /kategori/
+Allow: /tag/
+Allow: /search
+Allow: /about
+Allow: /contact
+Allow: /privacy
+Allow: /terms
 Sitemap: https://myexora.my.id/sitemap-index.xml
